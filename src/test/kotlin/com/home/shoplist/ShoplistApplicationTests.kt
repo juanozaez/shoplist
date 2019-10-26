@@ -1,9 +1,11 @@
 package com.home.shoplist
 
 import com.home.shoplist.context.food.domain.create.CreateFoodCommand
+import com.home.shoplist.context.food.domain.delete.DeleteFoodCommand
 import org.axonframework.commandhandling.gateway.CommandGateway
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
+import java.util.UUID
 import javax.inject.Inject
 
 @SpringBootTest
@@ -14,6 +16,9 @@ class ShoplistApplicationTests {
 
     @Test
     fun `it should create a food`() {
-        commandBus.sendAndWait<Void>(CreateFoodCommand("1", "Aguacate"))
+        UUID.randomUUID().toString().run {
+            commandBus.sendAndWait<Void>(CreateFoodCommand(this, "Aguacate"))
+            commandBus.sendAndWait<Void>(DeleteFoodCommand(this))
+        }
     }
 }
