@@ -1,4 +1,4 @@
-package com.example.shoplist
+package com.home.shoplist
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

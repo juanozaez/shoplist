@@ -22,12 +22,15 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-amqp")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+	implementation("javax.inject:javax.inject:1")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+	implementation("org.axonframework:axon-spring-boot-starter:4.2")
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {
 		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
 	}
 	testImplementation("org.springframework.amqp:spring-rabbit-test")
+	testImplementation("org.axonframework:axon-test:4.2")
 	testImplementation("org.springframework.restdocs:spring-restdocs-mockmvc")
 }
 
