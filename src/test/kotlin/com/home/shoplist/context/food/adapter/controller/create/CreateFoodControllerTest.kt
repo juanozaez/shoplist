@@ -2,7 +2,7 @@ package com.home.shoplist.context.food.adapter.controller.create
 
 import com.home.shoplist.context.food.domain.query.FoodResponse
 import com.home.shoplist.context.food.domain.query.by_id.FindFoodByIdQuery
-import com.home.shoplist.shared.AwaitAssertion.awaitAssertionOk
+import com.home.shoplist.shared.awaitAssertionOk
 import org.axonframework.queryhandling.QueryGateway
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
@@ -30,7 +30,7 @@ class CreateFoodControllerTest {
         val expected = FoodResponse("1", "Pear")
         restTemplate.postForObject("http://localhost:$serverPort/shoplist/foods", request, Void::class.java)
 
-        awaitAssertionOk{
+        awaitAssertionOk {
             val response = queryGateway.query(FindFoodByIdQuery("1"), FoodResponse::class.java).get()
             assertEquals(expected, response)
         }
