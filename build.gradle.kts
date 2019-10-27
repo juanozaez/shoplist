@@ -17,25 +17,27 @@ repositories {
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-amqp")
-    implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("javax.inject:javax.inject:1")
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.axonframework:axon-spring-boot-starter:4.2") {
         // Remove exclusion to test with Axon Server
         exclude(group = "org.axonframework", module = "axon-server-connector")
     }
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("org.springframework.boot:spring-boot-starter-amqp")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("com.h2database:h2")
+
+    testCompile("io.mockk:mockk:1.8.6")
+    testImplementation("org.axonframework:axon-test:4.2")
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
     }
     testImplementation("org.springframework.amqp:spring-rabbit-test")
-    testImplementation("org.axonframework:axon-test:4.2")
     testImplementation("org.springframework.restdocs:spring-restdocs-mockmvc")
-    testCompile("io.mockk:mockk:1.8.6")
+    testCompile ("com.github.rholder:guava-retrying:2.0.0")
 }
 
 tasks.withType<Test> {
